@@ -78,11 +78,10 @@ function Contacts() {
             setAlert('enter valid data!')
             return
         }
-
-        let newContact = contacts.find(contact => contact.id == id)
-        newContact = { ...contact }
-        let newContactsArray = contacts.filter(contact => contact.id !== id)
-        newContactsArray = [...newContactsArray, newContact]
+        const newContactsArray = contacts.map(item => {
+            item.id === id ? item = { ...contact } : ""
+            return item
+        })
         setContacts(newContactsArray)
         setContact({
             name: "",
